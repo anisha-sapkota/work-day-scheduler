@@ -69,3 +69,43 @@ textarea {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+/* Additional styles */
+
+#schedule {
+  width: 100%;
+}
+.timeBlock {
+  height: 60px;
+}
+
+.time {
+  border-right: 1px solid;
+  border-bottom: 1px dashed;
+  border-top: 1px dashed;
+}
+
+.event {
+  background-color: green;
+  border-bottom: 1px solid white;
+}
+
+.past {
+  background-color: darkgray;
+}
+
+.current {
+  background-color: red;
+}
+
+.button {
+  background-color: #06aed5;
+  border-left: 1px solid;
+  border-radius: 0 5px 5px 0;
+  border-bottom: 1px solid white;
+  padding: 1ch;
+  text-align: center;
+}
+
+.button:hover {
+  cursor: pointer;
+}
