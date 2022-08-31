@@ -13,13 +13,15 @@ var timeBlocks = [
   "5PM",
 ];
 
-function renderTimeBlocks() {
-  var scheduleEl = $("#schedule");
+var scheduleEl = $("#schedule");
 
+function renderTimeBlocks() {
   for (var i = 0; i < timeBlocks.length; i++) {
     var rowEl = $('<tr class="row-12 timeBlock"></tr>');
     var timeDataEl = $(`<td class="col-1 time">${timeBlocks[i]}</td>`);
-    var eventDataEl = $('<td class="col-10 event"></td>');
+    var eventDataEl = $(
+      `<td class="col-10 event" contenteditable data-time-block="${timeBlocks[i]}"></td>`
+    );
 
     if (isPassedHour(timeBlocks[i])) {
       $(eventDataEl).addClass("past");
@@ -30,12 +32,31 @@ function renderTimeBlocks() {
     var buttonEl = $(
       '<td class="col-1 button"><i class="bi bi-align-center bi-save-fill"></i></td>'
     );
-    $(buttonEl).on("click", function () {});
+    $(buttonEl).on("click", saveToLocalStorage);
     $(rowEl).append(timeDataEl);
     $(rowEl).append(eventDataEl);
     $(rowEl).append(buttonEl);
     $(scheduleEl).append(rowEl);
   }
+}
+
+function loadData() {
+  for (var i = 0; i < timeBlocks.length; i++) {
+    var data = localStorage.getItem(timeBlocks[i]);
+    if (data) {
+      var eventEl = $(scheduleEl).find(`[data-time-block=${timeBlocks[i]}]`)[0];
+      $(eventEl).text(data);
+    }
+  }
+}
+
+function saveToLocalStorage(event) {
+  event.stopPropagation();
+  var parentEl = $(event.target).parents(".timeBlock");
+  var eventEl = $(parentEl).children(".event");
+  var text = $(eventEl).text();
+  var time = $(eventEl).attr("data-time-block");
+  localStorage.setItem(time, text);
 }
 
 function isCurrentHour(hour) {
@@ -55,6 +76,7 @@ function isPassedHour(hour) {
 
 function init() {
   renderTimeBlocks();
+  loadData();
 }
 
 init();
