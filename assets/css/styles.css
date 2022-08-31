@@ -2,15 +2,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   line-height: 1;
-}
-
-textarea {
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: 10px;
+  min-height: 100vh;
 }
 
 .jumbotron {
@@ -19,6 +11,7 @@ textarea {
   color: black;
   border-radius: 0;
   border-bottom: 10px solid black;
+  margin: 0;
 }
 
 .description {
@@ -40,10 +33,14 @@ textarea {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  /* add border to bottom and right */
+  border-bottom: 1px dashed #000000;
+  border-right: 1px solid #000000;
 }
 
 .past {
-  background-color: #d3d3d3;
+  /* made the color darker so its easier to see white text */
+  background-color: #797878;
   color: white;
 }
 
@@ -53,51 +50,12 @@ textarea {
 }
 
 .future {
-  background-color: #77dd77;
+  /* made the color darker so its easier to see white text */
+  background-color: #429e42;
   color: white;
 }
 
 .saveBtn {
-  border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: #06aed5;
-  color: white;
-}
-
-.saveBtn i:hover {
-  font-size: 20px;
-  transition: all 0.3s ease-in-out;
-}
-/* Additional styles */
-
-#schedule {
-  width: 100%;
-}
-.timeBlock {
-  height: 60px;
-}
-
-.time {
-  border-right: 1px solid;
-  border-bottom: 1px dashed;
-  border-top: 1px dashed;
-}
-
-.event {
-  background-color: green;
-  border-bottom: 1px solid white;
-}
-
-.past {
-  background-color: darkgray;
-}
-
-.current {
-  background-color: red;
-}
-
-.button {
   background-color: #06aed5;
   border-left: 1px solid;
   border-radius: 0 5px 5px 0;
@@ -106,6 +64,30 @@ textarea {
   text-align: center;
 }
 
-.button:hover {
+.saveBtn i:hover {
   cursor: pointer;
+  font-size: 30px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Additional styles */
+
+#schedule {
+  /* make table occupy 100% width */
+  width: 100%;
+}
+
+.timeBlock {
+  height: 60px;
+}
+
+.event {
+  /* add white border at the bottom */
+  border-bottom: 1px solid white;
+}
+
+#savedMessage {
+  margin: 0;
+  padding: 5px;
+  text-align: center;
 }
