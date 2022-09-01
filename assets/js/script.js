@@ -1,6 +1,6 @@
 // get current day element and set current day.
 var dayEl = $("#currentDay");
-$(dayEl).text(moment().format("dddd, MMMM YYYY"));
+$(dayEl).text(moment().format("dddd, Do MMMM YYYY"));
 
 // business hours
 var businessHours = [
